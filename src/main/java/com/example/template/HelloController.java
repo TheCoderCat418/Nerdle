@@ -21,7 +21,8 @@ public class HelloController {
             txt40, txt41, txt42, txt43, txt44, txt45, txt46, txt47;
 
     private ArrayList<TextField> rows = new ArrayList<>();
-    private ArrayList<Character> userAnswer = new ArrayList<>();
+    private NerdleQuestion currentQuestion;
+    private NerdleFile nf;
     private int rowCheck = 1;
 
     public void addRowsToArr() {
@@ -78,23 +79,47 @@ public class HelloController {
 
     public void initialize() {
         //Load and check Nerdle File
-        NerdleFile nf = NerdleFile.loadNerdleFile(NerdleFile.DEFAULT_FILE_PATH);
+        nf = new NerdleFile(NerdleFile.DEFAULT_FILE_PATH);
         addRowsToArr();
         rowLocker(-10);
         rowLocker(1);
+        currentQuestion = nf.getQuestions().get((int)(nf.getQuestions().size() * Math.random()));
+
     }
 
 
     public void handleCheckAnswer(ActionEvent actionEvent) {
-//        System.out.println(row1.get(0).getText());
-        userAnswer.clear();
+        ArrayList<Character> userAnswer = new ArrayList<>();
         for (int i = rowCheck * 8 - 8; i < rowCheck * 8; i++) {
             String temp = rows.get(i).getText();
+            if(temp.length() != 1){ // Incomplete
+                return;
+            }
             userAnswer.add(temp.charAt(0));
 
         }
-        System.out.println(userAnswer);
-        rowCheck++;
+        ArrayList<Integer> results = currentQuestion.checkUserInput(userAnswer);
+        int correct = 0;
+        for(int i = 0; i<results.size(); i++){
+            if(results.get(i) == 1){
+                rows.get(rowCheck * 8 - 8 + i).setStyle("-fx-control-inner-background: green;");
+                correct++;
+            }
+        }
+
+        rowLocker(-1*rowCheck);
+        if(rowCheck < 6 && correct != 8) {
+            rowCheck++;
+            rowLocker(rowCheck);
+        }else{
+            if(correct == 8){
+                //Won
+                lblDisplay.setText("You won!");
+            }else{
+                //Lost
+                lblDisplay.setText("You lost. It was: " + currentQuestion.getQuestion());
+            }
+        }
 
     }
 
@@ -114,12 +139,13 @@ public class HelloController {
                     tf.setEditable(true);
                 }
             }
-        }
-        for (int i = Math.abs(row * 8 - 8); i < row * 8; i++) {
-            if (row < 0) {
-                rows.get(i).setEditable(false);
-            } else {
-                rows.get(i).setEditable(true);
+        }else {
+            for (int i = Math.abs(row) * 8 - 8; i < Math.abs(row) * 8; i++) {
+                if (row < 0) {
+                    rows.get(i).setEditable(false);
+                } else {
+                    rows.get(i).setEditable(true);
+                }
             }
         }
     }
