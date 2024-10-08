@@ -84,6 +84,7 @@ public class HelloController {
         rowLocker(-10);
         rowLocker(1);
         currentQuestion = nf.getQuestions().get((int)(nf.getQuestions().size() * Math.random()));
+        System.out.println(currentQuestion.getQuestion());
 
     }
 
@@ -104,6 +105,10 @@ public class HelloController {
             if(results.get(i) == 1){
                 rows.get(rowCheck * 8 - 8 + i).setStyle("-fx-control-inner-background: green;");
                 correct++;
+            }else if(results.get(i) == 0){
+                rows.get(rowCheck * 8 - 8 + i).setStyle("-fx-control-inner-background: #3f0776;");
+            }else if(results.get(i) == -1){
+                rows.get(rowCheck * 8 - 8 + i).setStyle("-fx-control-inner-background: #222222;");
             }
         }
 

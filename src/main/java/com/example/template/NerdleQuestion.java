@@ -72,22 +72,35 @@ public class NerdleQuestion {
     }
 
     public ArrayList<Integer> checkUserInput(ArrayList<Character> userInput){
-        ArrayList<Integer> results = new ArrayList<>();
-        //KEY CODES (VERY IMPORTANT!!!)
-        //
-        // -1 Not in equation
-        //  0 In wrong place | NOT USED IN C LEVEL
-        //  1 Correct
-
-        //Doulbe for need l;ater
-        if(userInput.size() != 8){
+        if(userInput.size() != 8) {
             throw new RuntimeException("User input length incorrect!");
+        };
+        ArrayList<Integer> results = new ArrayList<>(8);
+        for(int i = 0; i<8; i++){
+            results.add(-2);
         }
-        for(int i = 0; i<userInput.size();i++){
+        //KEY CODES (VERY IMPORTANT!!!)
+        // -2 Not Processed
+        // -1 Not in equation
+        //  0 In wrong place
+        //  1 Correct
+        for(int i = 0; i<results.size(); i++){
             if(userInput.get(i).equals(map.get(i))){
-                results.add(1);
-            }else{
-                results.add(-1);
+                results.set(i, 1);
+            }
+        }
+        for(int i =0; i<results.size();i++) {
+            if (results.get(i) == -2) {
+                for (int z = 0; z < map.size(); z++) {
+                    if (map.get(z).equals(userInput.get(i))) {
+                        results.set(i, 0);
+                        map.set(z, '}');
+                        break;
+                    }
+                }
+                if (results.get(i) == -2) {
+                    results.set(i, -1);
+                }
             }
         }
         return results;

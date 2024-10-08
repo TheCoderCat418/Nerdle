@@ -6,10 +6,8 @@ import java.util.Scanner;
 
 public class NerdleFile {
     public static File DEFAULT_FILE_PATH = new File("src/main/resources/default.nerdle");
-    private final File file;
     private final ArrayList<NerdleQuestion> nerdleQuestions;
     public NerdleFile(File file){
-        this.file = file;
 
         if(!file.exists()){
             throw new RuntimeException("File Not Found");
