@@ -79,22 +79,26 @@ public class NerdleQuestion {
         for(int i = 0; i<8; i++){
             results.add(-2);
         }
+
+        ArrayList<Character> questionMapCopy = new ArrayList<>(8);
+        questionMapCopy.addAll(map);
         //KEY CODES (VERY IMPORTANT!!!)
         // -2 Not Processed
         // -1 Not in equation
         //  0 In wrong place
         //  1 Correct
         for(int i = 0; i<results.size(); i++){
-            if(userInput.get(i).equals(map.get(i))){
+            if(userInput.get(i).equals(questionMapCopy.get(i))){
                 results.set(i, 1);
+                questionMapCopy.set(i, '}');
             }
         }
         for(int i =0; i<results.size();i++) {
             if (results.get(i) == -2) {
-                for (int z = 0; z < map.size(); z++) {
-                    if (map.get(z).equals(userInput.get(i))) {
+                for (int z = 0; z < questionMapCopy.size(); z++) {
+                    if (questionMapCopy.get(z).equals(userInput.get(i))) {
                         results.set(i, 0);
-                        map.set(z, '}');
+                        questionMapCopy.set(z, '}');
                         break;
                     }
                 }

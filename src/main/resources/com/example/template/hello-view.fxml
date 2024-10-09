@@ -32,57 +32,56 @@
            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="txt00" editable="false" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <TextField fx:id="txt01" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-            <TextField fx:id="txt02" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-            <TextField fx:id="txt03" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-            <TextField fx:id="txt04" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="4" GridPane.rowIndex="0" />
-            <TextField fx:id="txt05" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="5" GridPane.rowIndex="0" />
-            <TextField fx:id="txt06" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="6" GridPane.rowIndex="0" />
-            <TextField fx:id="txt07" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="7" GridPane.rowIndex="0" />
-            <TextField fx:id="txt08" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <TextField fx:id="txt09" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="txt10" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <TextField fx:id="txt11" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <TextField fx:id="txt12" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <TextField fx:id="txt13" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-            <TextField fx:id="txt14" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-            <TextField fx:id="txt15" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-             <TextField fx:id="txt16" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-             <TextField fx:id="txt17" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-             <TextField fx:id="txt18" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-             <TextField fx:id="txt19" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-             <TextField fx:id="txt20" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-             <TextField fx:id="txt21" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-             <TextField fx:id="txt22" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-             <TextField fx:id="txt23" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-             <TextField fx:id="txt24" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-             <TextField fx:id="txt25" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-             <TextField fx:id="txt26" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-             <TextField fx:id="txt27" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-             <TextField fx:id="txt28" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-             <TextField fx:id="txt29" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-             <TextField fx:id="txt30" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-             <TextField fx:id="txt31" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-             <TextField fx:id="txt32" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-             <TextField fx:id="txt33" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-             <TextField fx:id="txt34" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-             <TextField fx:id="txt35" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-             <TextField fx:id="txt36" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-             <TextField fx:id="txt37" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-             <TextField fx:id="txt38" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-             <TextField fx:id="txt39" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-             <TextField fx:id="txt40" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-             <TextField fx:id="txt41" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-             <TextField fx:id="txt42" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-             <TextField fx:id="txt43" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-             <TextField fx:id="txt44" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-             <TextField fx:id="txt45" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-             <TextField fx:id="txt46" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="6" GridPane.rowIndex="5" />
-             <TextField fx:id="txt47" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+            <TextField fx:id="txt00" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="txt01" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <TextField fx:id="txt02" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+            <TextField fx:id="txt03" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+            <TextField fx:id="txt04" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+            <TextField fx:id="txt05" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+            <TextField fx:id="txt06" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+            <TextField fx:id="txt07" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+            <TextField fx:id="txt08" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="txt09" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txt10" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField fx:id="txt11" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField fx:id="txt12" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <TextField fx:id="txt13" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <TextField fx:id="txt14" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+            <TextField fx:id="txt15" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+             <TextField fx:id="txt16" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+             <TextField fx:id="txt17" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+             <TextField fx:id="txt18" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+             <TextField fx:id="txt19" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+             <TextField fx:id="txt20" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+             <TextField fx:id="txt21" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+             <TextField fx:id="txt22" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+             <TextField fx:id="txt23" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+             <TextField fx:id="txt24" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+             <TextField fx:id="txt25" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+             <TextField fx:id="txt26" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+             <TextField fx:id="txt27" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+             <TextField fx:id="txt28" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+             <TextField fx:id="txt29" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+             <TextField fx:id="txt30" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+             <TextField fx:id="txt31" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+             <TextField fx:id="txt32" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+             <TextField fx:id="txt33" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+             <TextField fx:id="txt34" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+             <TextField fx:id="txt35" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+             <TextField fx:id="txt36" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+             <TextField fx:id="txt37" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+             <TextField fx:id="txt38" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+             <TextField fx:id="txt39" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+             <TextField fx:id="txt40" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+             <TextField fx:id="txt41" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+             <TextField fx:id="txt42" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+             <TextField fx:id="txt43" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+             <TextField fx:id="txt44" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+             <TextField fx:id="txt45" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+             <TextField fx:id="txt46" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+             <TextField fx:id="txt47" onKeyTyped="#advanceSelection" prefHeight="41.0" prefWidth="33.0" GridPane.columnIndex="7" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <Button layoutX="264.0" layoutY="327.0" mnemonicParsing="false" onAction="#handleCheckAnswer" text="CheckAnswer" />
-      <Button layoutX="406.0" layoutY="327.0" mnemonicParsing="false" onAction="#handleColorChangeExample" text="Example ColorChange" />
    </children>
 </AnchorPane>

@@ -4,6 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -76,7 +79,17 @@ public class HelloController {
         rows.add(txt47);
 
     }
-
+    public void advanceSelection(KeyEvent keyEvent){
+        TextField source = (TextField) keyEvent.getSource();
+        System.out.println(keyEvent.getCode().getCode());
+        for(int i = 0; i<rows.size();i++) {
+        if(keyEvent.getCode().compareTo(KeyCode.ENTER) == 0){
+            handleCheckAnswer();
+        }else if(source.equals(rows.get(i)) && rows.get(i+1).getText().isBlank() && rows.get(i).isEditable()){
+                rows.get(i+1).requestFocus();
+            }
+        }
+    }
     public void initialize() {
         //Load and check Nerdle File
         nf = new NerdleFile(NerdleFile.DEFAULT_FILE_PATH);
@@ -89,16 +102,23 @@ public class HelloController {
     }
 
 
-    public void handleCheckAnswer(ActionEvent actionEvent) {
+    public void handleCheckAnswer() {
         ArrayList<Character> userAnswer = new ArrayList<>();
+        boolean failed = false;
         for (int i = rowCheck * 8 - 8; i < rowCheck * 8; i++) {
+            rows.get(i).setStyle("");
             String temp = rows.get(i).getText();
-            if(temp.length() != 1){ // Incomplete
-                return;
+            if(!(temp.equals("1") || temp.equals("2") || temp.equals("3") || temp.equals("4") || temp.equals("5") || temp.equals("6") || temp.equals("7") || temp.equals("8") || temp.equals("9") || temp.equals("+") || temp.equals("-") || temp.equals("/") || temp.equals("*") || temp.equals("="))){
+                rows.get(i).setStyle("-fx-control-inner-background: #dd0000;");
+                failed = true;
+                continue;
             }
             userAnswer.add(temp.charAt(0));
-
         }
+        if(failed){
+            return;
+        }
+
         ArrayList<Integer> results = currentQuestion.checkUserInput(userAnswer);
         int correct = 0;
         for(int i = 0; i<results.size(); i++){
@@ -126,10 +146,6 @@ public class HelloController {
             }
         }
 
-    }
-
-    public void handleColorChangeExample(ActionEvent actionEvent) {
-        txt00.setStyle("-fx-control-inner-background: red;");
     }
 
     //Row locking to prevent modifications to past and future rows
