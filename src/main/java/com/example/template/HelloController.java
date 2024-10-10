@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -22,6 +24,8 @@ public class HelloController {
             txt24, txt25, txt26, txt27, txt28, txt29, txt30, txt31,
             txt32, txt33, txt34, txt35, txt36, txt37, txt38, txt39,
             txt40, txt41, txt42, txt43, txt44, txt45, txt46, txt47;
+    public AnchorPane Game;
+    public AnchorPane SplashScreen;
 
     private ArrayList<TextField> rows = new ArrayList<>();
     private NerdleQuestion currentQuestion;
@@ -81,17 +85,17 @@ public class HelloController {
     }
     public void advanceSelection(KeyEvent keyEvent){
         TextField source = (TextField) keyEvent.getSource();
-        System.out.println(keyEvent.getCode().getCode());
         for(int i = 0; i<rows.size();i++) {
-        if(keyEvent.getCode().compareTo(KeyCode.ENTER) == 0){
-            handleCheckAnswer();
-        }else if(source.equals(rows.get(i)) && rows.get(i+1).getText().isBlank() && rows.get(i).isEditable()){
+            if(source.equals(rows.get(i)) && rows.get(i+1).getText().isBlank() && rows.get(i).isEditable()){
                 rows.get(i+1).requestFocus();
             }
         }
     }
     public void initialize() {
         //Load and check Nerdle File
+        for(TextField tf : rows){
+            tf.setClip(new Rectangle(50,70));
+        }
         nf = new NerdleFile(NerdleFile.DEFAULT_FILE_PATH);
         addRowsToArr();
         rowLocker(-10);
