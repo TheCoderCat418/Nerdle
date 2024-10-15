@@ -18,7 +18,13 @@ public class NerdleFile {
             Scanner in = new Scanner(file);
             while(in.hasNextLine()){
                 String line = in.nextLine();
-                nqs.add(new NerdleQuestion(line));
+                if(!line.isBlank()){
+                    try{
+                        nqs.add(new NerdleQuestion(line));
+                    }catch (Exception ex){
+                        System.out.println("ERROR IN NERDLE FILE. EQUATION: " + line);
+                    }
+                }
             }
 
 

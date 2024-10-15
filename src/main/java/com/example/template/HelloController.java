@@ -1,14 +1,12 @@
 package com.example.template;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Rectangle;
-import org.w3c.dom.Text;
+import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
 
@@ -17,17 +15,16 @@ public class HelloController {
     @FXML
     public Label lblDisplay;
     @FXML
-    public TextField txtInput;
     public TextField txt00, txt01, txt02, txt03, txt04, txt05, txt06, txt07,
             txt08, txt09, txt10, txt11, txt12, txt13, txt14, txt15,
             txt16, txt17, txt18, txt19, txt20, txt21, txt22, txt23,
             txt24, txt25, txt26, txt27, txt28, txt29, txt30, txt31,
             txt32, txt33, txt34, txt35, txt36, txt37, txt38, txt39,
             txt40, txt41, txt42, txt43, txt44, txt45, txt46, txt47;
-    public AnchorPane Game;
-    public AnchorPane SplashScreen;
+    public GridPane grid;
+    public Button checkButton;
 
-    private ArrayList<TextField> rows = new ArrayList<>();
+    private final ArrayList<TextField> rows = new ArrayList<>();
     private NerdleQuestion currentQuestion;
     private NerdleFile nf;
     private int rowCheck = 1;
@@ -83,24 +80,32 @@ public class HelloController {
         rows.add(txt47);
 
     }
-    public void advanceSelection(KeyEvent keyEvent){
+
+
+    public void checkForKeyPress(KeyEvent keyEvent) {
+        if (keyEvent.getCode().compareTo(KeyCode.ENTER) == 0) {
+            handleCheckAnswer();
+            return;
+        }
         TextField source = (TextField) keyEvent.getSource();
-        for(int i = 0; i<rows.size();i++) {
-            if(source.equals(rows.get(i)) && rows.get(i+1).getText().isBlank() && rows.get(i).isEditable()){
-                rows.get(i+1).requestFocus();
+        for (int i = 0; i < rows.size(); i++) {
+            if (source.equals(rows.get(i)) && rows.get(i + 1).getText().isBlank() && rows.get(i).isEditable() && keyEvent.getCode().compareTo(KeyCode.BACK_SPACE) != 0 && keyEvent.getCode().compareTo(KeyCode.SHIFT) != 0) {
+                rows.get(i + 1).requestFocus();
             }
         }
     }
+
     public void initialize() {
         //Load and check Nerdle File
-        for(TextField tf : rows){
-            tf.setClip(new Rectangle(50,70));
-        }
         nf = new NerdleFile(NerdleFile.DEFAULT_FILE_PATH);
         addRowsToArr();
+        gameLoop();
+    }
+
+    public void gameLoop(){
         rowLocker(-10);
         rowLocker(1);
-        currentQuestion = nf.getQuestions().get((int)(nf.getQuestions().size() * Math.random()));
+        currentQuestion = nf.getQuestions().get((int) (nf.getQuestions().size() * Math.random()));
         System.out.println(currentQuestion.getQuestion());
 
     }
@@ -108,43 +113,55 @@ public class HelloController {
 
     public void handleCheckAnswer() {
         ArrayList<Character> userAnswer = new ArrayList<>();
+        StringBuilder userQuestion = new StringBuilder();
         boolean failed = false;
         for (int i = rowCheck * 8 - 8; i < rowCheck * 8; i++) {
             rows.get(i).setStyle("");
             String temp = rows.get(i).getText();
-            if(!(temp.equals("1") || temp.equals("2") || temp.equals("3") || temp.equals("4") || temp.equals("5") || temp.equals("6") || temp.equals("7") || temp.equals("8") || temp.equals("9") || temp.equals("+") || temp.equals("-") || temp.equals("/") || temp.equals("*") || temp.equals("="))){
+            userQuestion.append(temp);
+            if (!(temp.equals("1") || temp.equals("2") || temp.equals("3") || temp.equals("4") || temp.equals("5") || temp.equals("6") || temp.equals("7") || temp.equals("8") || temp.equals("9") || temp.equals("+") || temp.equals("-") || temp.equals("/") || temp.equals("*") || temp.equals("="))) {
                 rows.get(i).setStyle("-fx-control-inner-background: #dd0000;");
                 failed = true;
                 continue;
             }
             userAnswer.add(temp.charAt(0));
         }
-        if(failed){
+        try{
+            if(!failed) {
+                new NerdleQuestion(userQuestion.toString());
+            }
+        }catch (Exception ex){
+            failed = true;
+            for (int i = rowCheck * 8 - 8; i < rowCheck * 8; i++) {
+                rows.get(i).setStyle("-fx-control-inner-background: #004bff;");
+            }
+        }
+        if (failed) {
             return;
         }
 
         ArrayList<Integer> results = currentQuestion.checkUserInput(userAnswer);
         int correct = 0;
-        for(int i = 0; i<results.size(); i++){
-            if(results.get(i) == 1){
+        for (int i = 0; i < results.size(); i++) {
+            if (results.get(i) == 1) {
                 rows.get(rowCheck * 8 - 8 + i).setStyle("-fx-control-inner-background: green;");
                 correct++;
-            }else if(results.get(i) == 0){
+            } else if (results.get(i) == 0) {
                 rows.get(rowCheck * 8 - 8 + i).setStyle("-fx-control-inner-background: #3f0776;");
-            }else if(results.get(i) == -1){
+            } else if (results.get(i) == -1) {
                 rows.get(rowCheck * 8 - 8 + i).setStyle("-fx-control-inner-background: #222222;");
             }
         }
 
-        rowLocker(-1*rowCheck);
-        if(rowCheck < 6 && correct != 8) {
+        rowLocker(-1 * rowCheck);
+        if (rowCheck < 6 && correct != 8) {
             rowCheck++;
             rowLocker(rowCheck);
-        }else{
-            if(correct == 8){
+        } else {
+            if (correct == 8) {
                 //Won
                 lblDisplay.setText("You won!");
-            }else{
+            } else {
                 //Lost
                 lblDisplay.setText("You lost. It was: " + currentQuestion.getQuestion());
             }
@@ -157,21 +174,24 @@ public class HelloController {
     //To lock/Unlock all rows, use row 10
     public void rowLocker(int row) {
         if (Math.abs(row) == 10) {
-            for (TextField tf : rows){
-                if(row<0){
-                    tf.setEditable(false);
-                }else{
-                    tf.setEditable(true);
-                }
+            for (TextField tf : rows) {
+                tf.setEditable(row > 0);
             }
-        }else {
+        } else {
             for (int i = Math.abs(row) * 8 - 8; i < Math.abs(row) * 8; i++) {
-                if (row < 0) {
-                    rows.get(i).setEditable(false);
-                } else {
-                    rows.get(i).setEditable(true);
-                }
+                rows.get(i).setEditable(row > 0);
             }
+        }
+    }
+
+    public void screen(int screen) {
+        switch (Math.abs(screen)) {
+            case 1:
+                grid.setVisible(screen < 0);
+                checkButton.setVisible(screen < 0);
+                break;
+            case 2:
+                break;
         }
     }
 }
