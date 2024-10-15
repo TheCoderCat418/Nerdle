@@ -100,6 +100,7 @@ public class HelloController {
         nf = new NerdleFile(NerdleFile.DEFAULT_FILE_PATH);
         addRowsToArr();
         gameLoop();
+        UserFile.getUsers();
     }
 
     public void gameLoop(){
