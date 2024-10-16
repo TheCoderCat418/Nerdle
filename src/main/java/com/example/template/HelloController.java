@@ -100,10 +100,9 @@ public class HelloController {
         nf = new NerdleFile(NerdleFile.DEFAULT_FILE_PATH);
         addRowsToArr();
         gameLoop();
-        UserFile.getUsers();
     }
 
-    public void gameLoop(){
+    public void gameLoop() {
         rowLocker(-10);
         rowLocker(1);
         currentQuestion = nf.getQuestions().get((int) (nf.getQuestions().size() * Math.random()));
@@ -127,11 +126,11 @@ public class HelloController {
             }
             userAnswer.add(temp.charAt(0));
         }
-        try{
-            if(!failed) {
+        try {
+            if (!failed) {
                 new NerdleQuestion(userQuestion.toString());
             }
-        }catch (Exception ex){
+        } catch (Exception ex) {
             failed = true;
             for (int i = rowCheck * 8 - 8; i < rowCheck * 8; i++) {
                 rows.get(i).setStyle("-fx-control-inner-background: #004bff;");
@@ -194,5 +193,36 @@ public class HelloController {
             case 2:
                 break;
         }
+    }
+
+    //USER SCREEN
+
+    public void UserListSelect() {
+
+    }
+
+    public void addUser() {
+
+    }
+
+    public void removeUser() {
+
+    }
+
+    public void refreshUserList() {
+
+    }
+
+
+    public void play() {
+
+    }
+
+    public void playAgain() {
+
+    }
+
+    public void switchUser() {
+
     }
 }
