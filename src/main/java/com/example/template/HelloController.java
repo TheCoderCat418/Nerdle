@@ -2,6 +2,7 @@ package com.example.template;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -25,6 +26,15 @@ public class HelloController {
     public Button checkButton;
 
     private final ArrayList<TextField> rows = new ArrayList<>();
+    public Button adduser;
+    public Button adduserbtn;
+    public ComboBox cb;
+    public Button removeuserbtn;
+    public TextField usernametxt;
+    public TextField useridtxt;
+    public Label culbl;
+    public Label unlbl;
+    public Label uilbl;
     private NerdleQuestion currentQuestion;
     private NerdleFile nf;
     private User currentUser;
@@ -99,12 +109,13 @@ public class HelloController {
     public void initialize() {
         //Load and check Nerdle File
         nf = new NerdleFile(NerdleFile.DEFAULT_FILE_PATH);
-        UserFile.
+        currentUser = UserFile.getUser(0);
         addRowsToArr();
-        gameLoop();
+        game();
     }
 
-    public void gameLoop() {
+    public void game() {
+        screen(1);
         rowLocker(-10);
         rowLocker(1);
         currentQuestion = nf.getQuestions().get((int) (nf.getQuestions().size() * Math.random()));
@@ -155,6 +166,9 @@ public class HelloController {
             }
         }
 
+        
+        
+        
         rowLocker(-1 * rowCheck);
         if (rowCheck < 6 && correct != 8) {
             rowCheck++;
@@ -193,18 +207,24 @@ public class HelloController {
                 checkButton.setVisible(screen < 0);
                 break;
             case 2:
+                
                 break;
         }
     }
 
     //USER SCREEN
-
+    
     public void UserListSelect() {
 
     }
 
     public void addUser() {
-
+        if(!usernametxt.getText().isBlank()){
+            switchUser();
+            currentUser = new User(usernametxt.getText(), 0 , 0);
+            refreshUserList();
+            cb.getSelectionModel().select();
+        }
     }
 
     public void removeUser() {
@@ -212,9 +232,11 @@ public class HelloController {
     }
 
     public void refreshUserList() {
-
+        cb.getItems().clear();
+        for(User u : UserFile.getUsers()){
+            cb.getItems().add(u.getName());
+        }
     }
-
 
     public void play() {
 
@@ -225,6 +247,6 @@ public class HelloController {
     }
 
     public void switchUser() {
-
+        UserFile.addUser(currentUser);
     }
 }

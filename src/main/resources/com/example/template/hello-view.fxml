@@ -224,17 +224,17 @@
                      </font></TextField>
             </GridPane>
             <Button fx:id="checkButton" layoutX="388.0" layoutY="427.0" mnemonicParsing="false" onAction="#handleCheckAnswer" text="CheckAnswer" visible="false" />
-   <Button layoutX="41.0" layoutY="56.0" mnemonicParsing="false" prefHeight="347.0" prefWidth="223.0" text="PLAY!">
+   <Button layoutX="41.0" layoutY="56.0" mnemonicParsing="false" onAction="#play" prefHeight="347.0" prefWidth="223.0" text="PLAY!">
       <font>
          <Font size="54.0" />
       </font>
    </Button>
-   <Button layoutX="576.0" layoutY="146.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Add" />
-   <ComboBox layoutX="337.0" layoutY="56.0" prefWidth="150.0" promptText="Users" />
-   <Button layoutX="577.0" layoutY="273.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Remove" />
-   <TextField layoutX="576.0" layoutY="113.0" promptText="User Name" />
-   <TextField layoutX="576.0" layoutY="238.0" promptText="User Id" />
-   <Label layoutX="377.0" layoutY="105.0" text="Current User:" />
-   <Label layoutX="368.0" layoutY="138.0" text="User Name: N/A" />
-   <Label layoutX="379.0" layoutY="163.0" text="User Id: N/A" />
+   <Button fx:id="adduserbtn" layoutX="576.0" layoutY="146.0" mnemonicParsing="false" onAction="#addUser" prefHeight="25.0" prefWidth="149.0" text="Add" />
+   <ComboBox fx:id="cb" layoutX="337.0" layoutY="56.0" onAction="#UserListSelect" prefWidth="150.0" promptText="Users" />
+   <Button fx:id="removeuserbtn" layoutX="577.0" layoutY="273.0" mnemonicParsing="false" onAction="#removeUser" prefHeight="25.0" prefWidth="149.0" text="Remove" />
+   <TextField fx:id="usernametxt" layoutX="576.0" layoutY="113.0" promptText="User Name" />
+   <TextField fx:id="useridtxt" layoutX="576.0" layoutY="238.0" promptText="User Id" />
+   <Label fx:id="culbl" layoutX="377.0" layoutY="105.0" text="Current User:" />
+   <Label fx:id="unlbl" layoutX="368.0" layoutY="138.0" text="User Name: N/A" />
+   <Label fx:id="uilbl" layoutX="379.0" layoutY="163.0" text="User Id: N/A" />
       </AnchorPane>

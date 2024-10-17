@@ -1,10 +1,10 @@
 package com.example.template;
 
 public class User {
-    String name;
-    int gamesPlayed;
-    int gamesWon;
-    int userId;
+    private String name;
+    private int gamesPlayed;
+    private int gamesWon;
+    private int userId;
 
     public User(String name, int gamesPlayed, int gamesWon){
         this.userId = UserFile.getGreatestUserId()+1;
