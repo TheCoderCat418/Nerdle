@@ -78,4 +78,13 @@ public class UserFile {
         }
         return users;
     }
+
+    public static User getUser(int userId){
+        for(User user : getUsers()){
+            if(user.getUserId() == userId){
+                return user;
+            }
+        }
+        return null;
+    }
 }

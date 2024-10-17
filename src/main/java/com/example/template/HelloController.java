@@ -27,6 +27,7 @@ public class HelloController {
     private final ArrayList<TextField> rows = new ArrayList<>();
     private NerdleQuestion currentQuestion;
     private NerdleFile nf;
+    private User currentUser;
     private int rowCheck = 1;
 
     public void addRowsToArr() {
@@ -98,6 +99,7 @@ public class HelloController {
     public void initialize() {
         //Load and check Nerdle File
         nf = new NerdleFile(NerdleFile.DEFAULT_FILE_PATH);
+        UserFile.
         addRowsToArr();
         gameLoop();
     }
