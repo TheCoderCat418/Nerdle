@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="863.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.template.HelloController">
-    <GridPane fx:id="grid" gridLinesVisible="true" layoutX="152.0" layoutY="56.0" prefHeight="306.0" prefWidth="559.0">
+    <GridPane fx:id="grid" gridLinesVisible="true" layoutX="152.0" layoutY="56.0" prefHeight="306.0" prefWidth="559.0" visible="false">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -271,21 +271,22 @@
             </font>
         </TextField>
     </GridPane>
-    <Button fx:id="checkButton" layoutX="532.0" layoutY="403.0" mnemonicParsing="false" onAction="#handleCheckAnswer" text="Check Answer" />
-    <Button fx:id="playButton" layoutX="41.0" layoutY="56.0" mnemonicParsing="false" onAction="#play" prefHeight="347.0" prefWidth="223.0" text="PLAY!" visible="false">
+    <Button fx:id="checkButton" layoutX="532.0" layoutY="403.0" mnemonicParsing="false" onAction="#handleCheckAnswer" text="Check Answer" visible="false" />
+    <Button fx:id="playButton" layoutX="41.0" layoutY="56.0" mnemonicParsing="false" onAction="#play" prefHeight="347.0" prefWidth="223.0" text="PLAY!">
         <font>
             <Font size="54.0" />
         </font>
     </Button>
-    <Button fx:id="adduserbtn" layoutX="576.0" layoutY="146.0" mnemonicParsing="false" onAction="#addUser" prefHeight="25.0" prefWidth="149.0" text="Add" visible="false" />
-    <ComboBox fx:id="cb" layoutX="337.0" layoutY="56.0" onAction="#UserListSelect" prefWidth="150.0" promptText="Users" visible="false" />
-    <Button fx:id="removeuserbtn" layoutX="576.0" layoutY="178.0" mnemonicParsing="false" onAction="#removeUser" prefHeight="25.0" prefWidth="149.0" text="Remove" visible="false" />
-    <TextField fx:id="usernametxt" layoutX="576.0" layoutY="113.0" promptText="User Name" visible="false" />
-    <Label fx:id="culbl" layoutX="377.0" layoutY="105.0" text="Current User:" visible="false" />
-    <Label fx:id="unlbl" layoutX="368.0" layoutY="138.0" text="User Name: N/A" visible="false" />
-    <Label fx:id="gplbl" layoutX="361.0" layoutY="162.0" text="Games Played: N/A" visible="false" />
-    <Label fx:id="gwlbl" layoutX="366.0" layoutY="191.0" text="Games Won: N/A" visible="false" />
-    <Button fx:id="playAgainButton" layoutX="264.0" layoutY="403.0" mnemonicParsing="false" onAction="#playAgain" text="Play again" />
-    <Button fx:id="menu" layoutX="406.0" layoutY="403.0" mnemonicParsing="false" onAction="#returnToMenu" text="Menu" />
-    <Label fx:id="lblDisplay" alignment="CENTER" layoutX="340.0" layoutY="372.0" prefHeight="17.0" prefWidth="178.0" />
+    <Button fx:id="adduserbtn" layoutX="576.0" layoutY="146.0" mnemonicParsing="false" onAction="#addUser" prefHeight="25.0" prefWidth="149.0" text="Add" />
+    <ComboBox fx:id="cb" layoutX="337.0" layoutY="56.0" onAction="#UserListSelect" prefWidth="150.0" promptText="Users" />
+    <Button fx:id="removeuserbtn" layoutX="576.0" layoutY="178.0" mnemonicParsing="false" onAction="#removeUser" prefHeight="25.0" prefWidth="149.0" text="Remove" />
+    <TextField fx:id="usernametxt" layoutX="576.0" layoutY="113.0" promptText="User Name" />
+    <Label fx:id="culbl" layoutX="377.0" layoutY="105.0" text="Current User:" />
+    <Label fx:id="unlbl" layoutX="368.0" layoutY="138.0" text="User Name: N/A" />
+    <Label fx:id="gplbl" layoutX="361.0" layoutY="162.0" text="Games Played: N/A" />
+    <Label fx:id="gwlbl" layoutX="366.0" layoutY="191.0" text="Games Won: N/A" />
+    <Button fx:id="playAgainButton" layoutX="264.0" layoutY="403.0" mnemonicParsing="false" onAction="#playAgain" text="Play again" visible="false" />
+    <Button fx:id="menu" layoutX="406.0" layoutY="403.0" mnemonicParsing="false" onAction="#returnToMenu" text="Menu" visible="false" />
+    <Label fx:id="lblDisplay" alignment="CENTER" layoutX="340.0" layoutY="372.0" prefHeight="17.0" prefWidth="178.0" visible="false" />
+   <Label fx:id="agpglbl" layoutX="325.0" layoutY="221.0" prefHeight="17.0" prefWidth="178.0" text="Avarage Guesses Per Game: N/A" />
 </AnchorPane>

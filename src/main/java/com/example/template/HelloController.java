@@ -34,6 +34,7 @@ public class HelloController {
     public Button playAgainButton;
 
     private final ArrayList<TextField> rows = new ArrayList<>();
+    public Label agpglbl;
     private NerdleQuestion currentQuestion;
     private NerdleFile nf;
     private User currentUser;
@@ -185,10 +186,10 @@ public class HelloController {
         } else {
             if (correct == 8) {
                 //Won
-                currentUser.addGame(true);
+                currentUser.addGame(true,rowCheck);
                 lblDisplay.setText("You won!");
             } else {
-                currentUser.addGame(false);
+                currentUser.addGame(false, rowCheck);
                 //Lost
                 lblDisplay.setText("You lost. It was: " + currentQuestion.getQuestion());
             }
@@ -233,6 +234,7 @@ public class HelloController {
                 gwlbl.setVisible(screen > 0);
                 gplbl.setVisible(screen > 0);
                 playButton.setVisible(screen > 0);
+                agpglbl.setVisible(screen > 0);
                 break;
         }
     }
@@ -247,6 +249,7 @@ public class HelloController {
             unlbl.setText("Username: " + currentUser.getName());
             gwlbl.setText("Games Won: " + currentUser.getGamesWon());
             gplbl.setText("Games Played: " + currentUser.getGamesPlayed());
+            agpglbl.setText("Avarage Guesses Per Game: " + currentUser.getAverageGuessesPerGame());
         }
     }
 
@@ -298,5 +301,6 @@ public class HelloController {
     public void returnToMenu() {
         screen(-1);
         screen(2);
+        UserListSelect();
     }
 }

@@ -21,7 +21,7 @@ public class UserFile {
         }
         try {
             FileWriter writer = new FileWriter(nerdleFolder.getAbsolutePath() + "\\users.nerdle");
-            writer.write("default, 0, 0\n");
+            writer.write("default, 0, 0, 0\n");
             writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
