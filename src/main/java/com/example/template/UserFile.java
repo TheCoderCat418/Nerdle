@@ -1,14 +1,14 @@
 package com.example.template;
 
-import javax.swing.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserFile {
-    private static File nerdleFolder = new File(System.getenv("APPDATA") + "\\ConantNerdle");
+    private static final File nerdleFolder = new File(System.getenv("APPDATA") + "\\ConantNerdle");
 
     public static void createNerdleFolder() {
         if (!nerdleFolder.mkdir()) {
@@ -21,13 +21,14 @@ public class UserFile {
         }
         try {
             FileWriter writer = new FileWriter(nerdleFolder.getAbsolutePath() + "\\users.nerdle");
-            writer.write("default, 0, 0, 0");
+            writer.write("default, 0, 0\n");
             writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
+    //Run to remove from AppData
     public static void destroyNerdleFolder() {
         for (File file : nerdleFolder.listFiles()) {
             if (!file.delete()) {
@@ -40,49 +41,72 @@ public class UserFile {
     }
 
     public static void addUser(User user) {
-        Scanner in = new Scanner(nerdleFolder.getAbsolutePath() + "\\users.nerdle");
-        ArrayList<String> lines = new ArrayList<>();
-        while (in.hasNextLine()) {
-            String line = in.nextLine();
-            if (Integer.parseInt(line.split(",")[3].strip()) == user.getUserId()) {
-                lines.add(user.toString());
-            } else {
-                lines.add(line);
-            }
-        }
         try {
+            Scanner in = new Scanner(new File(nerdleFolder.getAbsolutePath() + "\\users.nerdle"));
+            ArrayList<String> lines = new ArrayList<>();
+            boolean isNew = true;
+            while (in.hasNextLine()) {
+                String line = in.nextLine();
+                if (line.split(",")[0].strip().equals(user.getName())) {
+                    lines.add(user.toString());
+                    isNew = false;
+                } else {
+                    lines.add(line);
+                }
+            }
+            if (isNew) {
+                lines.add(user.toString());
+            }
             FileWriter writer = new FileWriter(nerdleFolder.getAbsolutePath() + "\\users.nerdle");
             for (String line : lines) {
-                writer.write(line);
+                writer.write(line + "\n");
             }
             writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
     }
 
-    public static int getGreatestUserId() {
-        Scanner in = new Scanner(nerdleFolder.getAbsolutePath() + "\\users.nerdle");
-        int lines = 0;
-        while (in.hasNextLine()) {
-            String line = in.nextLine();
-            lines++;
+    public static void removeUser(String user) {
+        if (!user.equals("default")) {
+            try {
+                Scanner in = new Scanner(new File(nerdleFolder.getAbsolutePath() + "\\users.nerdle"));
+                ArrayList<String> lines = new ArrayList<>();
+                while (in.hasNextLine()) {
+                    String line = in.nextLine();
+                    if (!line.split(",")[0].strip().equals(user)) {
+                        lines.add(line);
+                    }
+                }
+
+                FileWriter writer = new FileWriter(nerdleFolder.getAbsolutePath() + "\\users.nerdle");
+                for (String line : lines) {
+                    writer.write(line + "\n");
+                }
+                writer.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
-        return lines - 1;
     }
 
     public static ArrayList<User> getUsers() {
-        Scanner in = new Scanner(nerdleFolder.getAbsolutePath() + "\\users.nerdle");
-        ArrayList<User> users = new ArrayList<>();
-        while (in.hasNextLine()) {
-            users.add(new User(in.nextLine()));
+        try {
+            Scanner in = new Scanner(new File(nerdleFolder.getAbsolutePath() + "\\users.nerdle"));
+            ArrayList<User> users = new ArrayList<>();
+            while (in.hasNextLine()) {
+                users.add(new User(in.nextLine()));
+            }
+            return users;
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         }
-        return users;
     }
 
-    public static User getUser(int userId){
-        for(User user : getUsers()){
-            if(user.getUserId() == userId){
+    public static User getUser(String userName) {
+        for (User user : getUsers()) {
+            if (user.getName().equals(userName)) {
                 return user;
             }
         }

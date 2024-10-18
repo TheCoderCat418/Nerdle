@@ -3,21 +3,23 @@ package com.example.template;
 import java.util.ArrayList;
 
 public class NerdleQuestion {
+
     private final String question;
     private final ArrayList<Character> map;
+
     public NerdleQuestion(String question) throws Exception {
         this.question = question;
         this.map = mapEquation();
-        if(!isVaild() || this.map == null){
+        if (!isVaild() || this.map == null) {
             throw new Exception("Question Not Vaild!");
         }
     }
 
-    private ArrayList<Character> mapEquation(){
+    private ArrayList<Character> mapEquation() {
         ArrayList<Character> flags = new ArrayList<>();
-        for(int i = 0; i<question.length();i++){
+        for (int i = 0; i < question.length(); i++) {
             char currentChar = question.charAt(i);
-            switch (currentChar){
+            switch (currentChar) {
                 case '=':
                     flags.add('=');
                     break;
@@ -37,7 +39,7 @@ public class NerdleQuestion {
                     //Validate number by convering to int
                     try {
                         Integer.parseInt(String.valueOf(currentChar));
-                    }catch (NumberFormatException nfe){
+                    } catch (NumberFormatException nfe) {
                         return null;
                     }
                     flags.add(currentChar);
@@ -69,7 +71,7 @@ public class NerdleQuestion {
         }
         ArrayList<String> brokenEquation = new ArrayList<>();
         for (int i = 0; i < map.size(); i++) {
-            if(!charIs(map.get(i)).equals("number")){
+            if (!charIs(map.get(i)).equals("number")) {
                 brokenEquation.add("operator");
                 continue;
             }
@@ -78,68 +80,68 @@ public class NerdleQuestion {
             while (charIs(map.get(i + b)).equals("number")) {
                 numberString.append(map.get(i + b));
                 b++;
-                if(i + b > map.size()-1){
+                if (i + b > map.size() - 1) {
                     break;
                 }
             }
             brokenEquation.add(numberString.toString());
-            i += b-1;
+            i += b - 1;
         }
         boolean EOE = false;
         int index = 1;
-        while(!EOE){
+        while (!EOE) {
             int opIndex = brokenEquation.indexOf("operator");
-            if(opIndex != -1){
+            if (opIndex != -1) {
                 int internalIndex = 0;
-                for(Character c : map){
-                    if(!charIs(c).equals("number")){
+                for (Character c : map) {
+                    if (!charIs(c).equals("number")) {
                         internalIndex++;
-                        if(internalIndex == index){
+                        if (internalIndex == index) {
                             brokenEquation.set(opIndex, Character.toString(c));
                             index++;
                             break;
                         }
                     }
                 }
-            }else{
+            } else {
                 EOE = true;
             }
         }
 
         //SOLVE
         EOE = false;
-        while (!EOE){
-            if(brokenEquation.contains("*")){
+        while (!EOE) {
+            if (brokenEquation.contains("*")) {
                 index = brokenEquation.indexOf("*");
-                brokenEquation.set(index, Integer.toString(solve(Integer.parseInt(brokenEquation.get(index-1)), "*", Integer.parseInt(brokenEquation.get(index+1)))));
-                brokenEquation.remove(index-1);
+                brokenEquation.set(index, Integer.toString(solve(Integer.parseInt(brokenEquation.get(index - 1)), "*", Integer.parseInt(brokenEquation.get(index + 1)))));
+                brokenEquation.remove(index - 1);
                 brokenEquation.remove(index);
-            }else if(brokenEquation.contains("/")){
+            } else if (brokenEquation.contains("/")) {
                 index = brokenEquation.indexOf("/");
-                brokenEquation.set(index, Integer.toString(solve(Integer.parseInt(brokenEquation.get(index-1)), "/", Integer.parseInt(brokenEquation.get(index+1)))));
-                brokenEquation.remove(index-1);
+                brokenEquation.set(index, Integer.toString(solve(Integer.parseInt(brokenEquation.get(index - 1)), "/", Integer.parseInt(brokenEquation.get(index + 1)))));
+                brokenEquation.remove(index - 1);
                 brokenEquation.remove(index);
-            }else if(brokenEquation.contains("+")){
+            } else if (brokenEquation.contains("+")) {
                 index = brokenEquation.indexOf("+");
-                brokenEquation.set(index, Integer.toString(solve(Integer.parseInt(brokenEquation.get(index-1)), "+", Integer.parseInt(brokenEquation.get(index+1)))));
-                brokenEquation.remove(index-1);
+                brokenEquation.set(index, Integer.toString(solve(Integer.parseInt(brokenEquation.get(index - 1)), "+", Integer.parseInt(brokenEquation.get(index + 1)))));
+                brokenEquation.remove(index - 1);
                 brokenEquation.remove(index);
-            }else if(brokenEquation.contains("-")){
+            } else if (brokenEquation.contains("-")) {
                 index = brokenEquation.indexOf("-");
-                brokenEquation.set(index, Integer.toString(solve(Integer.parseInt(brokenEquation.get(index-1)), "-", Integer.parseInt(brokenEquation.get(index+1)))));
-                brokenEquation.remove(index-1);
+                brokenEquation.set(index, Integer.toString(solve(Integer.parseInt(brokenEquation.get(index - 1)), "-", Integer.parseInt(brokenEquation.get(index + 1)))));
+                brokenEquation.remove(index - 1);
                 brokenEquation.remove(index);
-            }else{
+            } else {
                 EOE = true;
             }
         }
-        if(brokenEquation.size() == 3){
+        if (brokenEquation.size() == 3) {
             return Integer.parseInt(brokenEquation.getFirst()) == Integer.parseInt(brokenEquation.getLast());
         }
         return false;
     }
 
-    private int solve(int a, String op, int b){
+    private int solve(int a, String op, int b) {
         return switch (op) {
             case "+" -> a + b;
             case "-" -> a - b;
@@ -149,29 +151,31 @@ public class NerdleQuestion {
         };
     }
 
-    public ArrayList<Integer> checkUserInput(ArrayList<Character> userInput){
-        if(userInput.size() != 8) {
+    public ArrayList<Integer> checkUserInput(ArrayList<Character> userInput) {
+        if (userInput.size() != 8) {
             throw new RuntimeException("User input length incorrect!");
         }
         ArrayList<Integer> results = new ArrayList<>(8);
-        for(int i = 0; i<8; i++){
+        for (int i = 0; i < 8; i++) {
             results.add(-2);
         }
 
         ArrayList<Character> questionMapCopy = new ArrayList<>(8);
         questionMapCopy.addAll(map);
+
         //KEY CODES (VERY IMPORTANT!!!)
         // -2 Not Processed
         // -1 Not in equation
         //  0 In wrong place
         //  1 Correct
-        for(int i = 0; i<results.size(); i++){
-            if(userInput.get(i).equals(questionMapCopy.get(i))){
+
+        for (int i = 0; i < results.size(); i++) {
+            if (userInput.get(i).equals(questionMapCopy.get(i))) {
                 results.set(i, 1);
                 questionMapCopy.set(i, '}');
             }
         }
-        for(int i =0; i<results.size();i++) {
+        for (int i = 0; i < results.size(); i++) {
             if (results.get(i) == -2) {
                 for (int z = 0; z < questionMapCopy.size(); z++) {
                     if (questionMapCopy.get(z).equals(userInput.get(i))) {
@@ -188,15 +192,16 @@ public class NerdleQuestion {
         return results;
     }
 
-    private String charIs(char Char){
-        if(Char == '*' || Char == '/' || Char == '+' || Char == '-'){
+    private String charIs(char Char) {
+        if (Char == '*' || Char == '/' || Char == '+' || Char == '-') {
             return "operator";
-        }else if(Char == '='){
+        } else if (Char == '=') {
             return "equal";
         }
         return "number";
     }
-    public String getQuestion(){
+
+    public String getQuestion() {
         return question;
     }
 }

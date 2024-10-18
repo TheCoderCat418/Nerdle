@@ -1,37 +1,47 @@
 package com.example.template;
 
 public class User {
+
     private String name;
     private int gamesPlayed;
     private int gamesWon;
-    private int userId;
 
-    public User(String name, int gamesPlayed, int gamesWon){
-        this.userId = UserFile.getGreatestUserId()+1;
+    public User(String name, int gamesPlayed, int gamesWon) {
         this.gamesPlayed = gamesPlayed;
         this.gamesWon = gamesWon;
         this.name = name;
     }
 
-    public User(String CSS_User){
+    public User(String CSS_User) {
         String[] broken = CSS_User.split(",");
-        if(broken.length == 4){
+        if (broken.length == 3) {
             this.name = broken[0].strip();
             this.gamesPlayed = Integer.parseInt(broken[1].strip());
             this.gamesWon = Integer.parseInt(broken[2].strip());
-            this.userId = Integer.parseInt(broken[3].strip());
         }
     }
 
-    public String getName(){
+    public void addGame(boolean won) {
+        gamesPlayed++;
+        if (won) {
+            gamesWon++;
+        }
+    }
+
+    public int getGamesWon() {
+        return gamesWon;
+    }
+
+    public int getGamesPlayed() {
+        return gamesPlayed;
+    }
+
+    public String getName() {
         return name;
     }
 
-    public int getUserId(){
-        return userId;
-    }
     @Override
-    public String toString(){
-        return name + ", " + gamesPlayed + ", " + gamesWon + ", " + userId;
+    public String toString() {
+        return name + ", " + gamesPlayed + ", " + gamesWon;
     }
 }
